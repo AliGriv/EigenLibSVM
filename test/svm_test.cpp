@@ -6,8 +6,8 @@ BSD licence
 
 #include <string>
 #include <vector>
-#include <stdlib.h>
 
+#include <stdlib.h>
 #include <eigen3/Eigen/Eigen>
 #include <eigenlibsvm/svm_utils.h>
 #include <eigenlibsvm/eigen_extensions.h>
@@ -18,12 +18,29 @@ using namespace esvm;
 // run from build folder of the project (see path below)
 int main (int argc, char** argv) {
   
-  Eigen::MatrixXf X;
-  Eigen::MatrixXf y;
-  eigen_extensions::loadASCII("../test/svmtestx.eig.txt", &X);
-  eigen_extensions::loadASCII("../test/svmtesty.eig.txt", &y);
+  Eigen::MatrixXf X(8,3) ;
+  Eigen::MatrixXf y(8,1);
+  X << 2.0,2.0,1.0,
+       4.0,2.0,1.0,
+       4.0,0.0,1.0,
+       2.0,0.0,1.0,
+       1.0,3.0,1.0,
+       1.0,5.0,1.0,
+       -1.0,5.0,1.0,
+       -1.0,3.0,1.0;
+
+  y << 1,
+       1,
+       1,
+       1,
+       -1,
+       -1,
+       -1,
+       -1;
+  //eigen_extensions::loadASCII("../test/svmtestx.eig.txt", &X);
+  //eigen_extensions::loadASCII("../test/svmtesty.eig.txt", &y);
   
-  // Classify
+  ///Classify
   cout << X.topRows(5) << endl;
   cout << y.topRows(5) << endl;
   vector<int> yhat;
@@ -34,8 +51,13 @@ int main (int argc, char** argv) {
   Eigen::MatrixXf w;
   float b;
   svm.getw(w, b);
-  Eigen::MatrixXf margin= ((X * w).array() + b).matrix(); // ahh eigen...
-  
+  cout << "w : " << w << endl;
+  cout << "b : " << b << endl;
+  Eigen::MatrixXf margin ;
+  margin = ((X * w).array() + b).matrix(); // ahh eigen...
+  //
+  cout << "margin: " << endl;
+  cout << margin << endl;
   // Evaluate accuracy and print results
   int match=0;
   for(int i=0;i<yhat.size();i++) {
@@ -59,5 +81,6 @@ int main (int argc, char** argv) {
   
   
   printf("you may want to rm the temporary file temp.svmmodel\n");
+  return 0;
 }
   
