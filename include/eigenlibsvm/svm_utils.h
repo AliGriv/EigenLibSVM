@@ -36,17 +36,17 @@ namespace esvm {
       ~SVMClassifier();
       
       // train the svm
-      void train(const Eigen::MatrixXf &X, const vector<int> &y);
-      void train(const Eigen::MatrixXf &X, const Eigen::MatrixXf &y);
+      void train(const Eigen::MatrixXd &X, const vector<int> &y);
+      void train(const Eigen::MatrixXd &X, const Eigen::MatrixXd &y);
       
       // test on new data 
-      void test(const Eigen::MatrixXf &X, vector<int> &yhat);
+      void test(const Eigen::MatrixXd &X, vector<int> &yhat);
       
       // libsvm does not directly calculate the w and b, but a set of support
       // vectors. This function will use them to compute w and b, as currenly
       // we assume linear kernel only
       // yhat = sign( X * w + b )
-      void getw(Eigen::MatrixXf &w, float &b);
+      void getw(Eigen::MatrixXd &w, double &b);
       
       // I/O
       int saveModel(const char *filename);

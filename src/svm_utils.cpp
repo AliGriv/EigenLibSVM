@@ -48,7 +48,7 @@ namespace esvm {
     if(model_ != NULL) svm_free_model_content(model_);
   }
 
-  void SVMClassifier::train(const Eigen::MatrixXf &X, const Eigen::MatrixXf &y) {
+  void SVMClassifier::train(const Eigen::MatrixXd &X, const Eigen::MatrixXd &y) {
     
     // convert to vector and call real train
     int N= y.size();
@@ -58,7 +58,7 @@ namespace esvm {
     train(X, yc);
   }
 
-  void SVMClassifier::train(const Eigen::MatrixXf &X, const vector<int> &y) {
+  void SVMClassifier::train(const Eigen::MatrixXd &X, const vector<int> &y) {
     
     // Do some simple error checking before we begin
     int Ntr= X.rows();
@@ -123,7 +123,7 @@ namespace esvm {
     free(problem_->x);
   }
 
-  void SVMClassifier::test(const Eigen::MatrixXf &X, vector<int> &yhat) {
+  void SVMClassifier::test(const Eigen::MatrixXd &X, vector<int> &yhat) {
     
     // Do simple error checking
     int Nte= X.rows();
@@ -156,7 +156,7 @@ namespace esvm {
     free(x);
   }
   
-  void SVMClassifier::getw(Eigen::MatrixXf &w, float &b) {
+  void SVMClassifier::getw(Eigen::MatrixXd &w, double &b) {
     if(model_ == NULL) { printf("Error! Train an SVM first! Exitting... \n"); return;}
 
     b= model_->rho[0]; //libsvm stores -b in rho

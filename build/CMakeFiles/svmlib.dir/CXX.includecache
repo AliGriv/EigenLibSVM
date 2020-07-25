@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/eigenlibsvm/eigen_extensions.h
+stdint.h
+-
+fstream
+-
+iostream
+-
+eigen3/Eigen/Eigen
+-
+
+../include/eigenlibsvm/svm_utils.h
+string
+-
+vector
+-
+libsvm/svm.h
+-
+eigen3/Eigen/Eigen
+-
+
+/home/griv/EigenLibSVM/src/svm_utils.cpp
+eigenlibsvm/svm_utils.h
+-
+eigenlibsvm/eigen_extensions.h
+-
+

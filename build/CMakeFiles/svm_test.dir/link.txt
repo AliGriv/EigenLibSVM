@@ -1,0 +1,1 @@
+/usr/bin/g++-5   -g   CMakeFiles/svm_test.dir/test/svm_test.cpp.o  -o svm_test -rdynamic libsvmlib.a -lsvm 

@@ -18,8 +18,8 @@ using namespace esvm;
 // run from build folder of the project (see path below)
 int main (int argc, char** argv) {
   
-  Eigen::MatrixXf X(8,3) ;
-  Eigen::MatrixXf y(8,1);
+  Eigen::MatrixXd X(8,3) ;
+  Eigen::MatrixXd y(8,1);
   X << 2.0,2.0,1.0,
        4.0,2.0,1.0,
        4.0,0.0,1.0,
@@ -48,12 +48,12 @@ int main (int argc, char** argv) {
   svm.train(X, y);
   svm.test(X, yhat);
   
-  Eigen::MatrixXf w;
-  float b;
+  Eigen::MatrixXd w;
+  double b;
   svm.getw(w, b);
   cout << "w : " << w << endl;
   cout << "b : " << b << endl;
-  Eigen::MatrixXf margin ;
+  Eigen::MatrixXd margin ;
   margin = ((X * w).array() + b).matrix(); // ahh eigen...
   //
   cout << "margin: " << endl;

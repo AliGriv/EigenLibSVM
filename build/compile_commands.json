@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/griv/EigenLibSVM/build",
+  "command": "/usr/bin/g++-5    -I/home/griv/EigenLibSVM/include  -g   -o CMakeFiles/svm_test.dir/test/svm_test.cpp.o -c /home/griv/EigenLibSVM/test/svm_test.cpp",
+  "file": "/home/griv/EigenLibSVM/test/svm_test.cpp"
+},
+{
+  "directory": "/home/griv/EigenLibSVM/build",
+  "command": "/usr/bin/g++-5    -I/home/griv/EigenLibSVM/include  -g   -o CMakeFiles/svmlib.dir/src/svm_utils.cpp.o -c /home/griv/EigenLibSVM/src/svm_utils.cpp",
+  "file": "/home/griv/EigenLibSVM/src/svm_utils.cpp"
+}
+]
